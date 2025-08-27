@@ -1,0 +1,38 @@
+export const sampleCompanies = [
+  {
+    name: "TechCorp Inc",
+    industry: "Technology",
+    country: "United States",
+    city: "San Francisco",
+    employees: 1250,
+    description: "Leading software development company specializing in cloud solutions and enterprise applications.",
+    logoUrl: null,
+  },
+  {
+    name: "MedHealth Solutions",
+    industry: "Healthcare",
+    country: "United States", 
+    city: "Boston",
+    employees: 850,
+    description: "Innovative healthcare technology company providing digital solutions for hospitals and clinics worldwide.",
+    logoUrl: null,
+  },
+  {
+    name: "FinanceFlow",
+    industry: "Finance",
+    country: "United States",
+    city: "New York",
+    employees: 2100,
+    description: "Premier financial services company offering innovative investment and wealth management solutions.",
+    logoUrl: null,
+  },
+  {
+    name: "ManufacturePro",
+    industry: "Manufacturing",
+    country: "United States",
+    city: "Detroit",
+    employees: 3400,
+    description: "Advanced manufacturing solutions provider specializing in automotive and aerospace components.",
+    logoUrl: null,
+  },
+];

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { CompanyCard } from "@/components/company-card";
 import { CompanyTable } from "@/components/company-table";
 import { CompanyForm } from "@/components/company-form";
 import { apiRequest } from "@/lib/queryClient";
-import type { Company, InsertCompany } from "@shared/schema";
+import type { Company, InsertCompany } from "@shared/mongo-schema";
 import type { CompanyFilters, ViewMode, PaginationState } from "@/lib/types";
 
 const ITEMS_PER_PAGE = 12;
@@ -114,7 +114,7 @@ export default function CompaniesPage() {
   const updateMutation = useMutation({
     mutationFn: async (data: InsertCompany) => {
       if (!editingCompany) throw new Error("No company to update");
-      const response = await apiRequest("PUT", `/api/companies/${editingCompany.id}`, data);
+      const response = await apiRequest("PUT", `/api/companies/${editingCompany._id}`, data);
       return response.json();
     },
     onSuccess: () => {
@@ -276,7 +276,7 @@ export default function CompaniesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
             {paginatedCompanies.map((company) => (
               <CompanyCard
-                key={company.id}
+                key={company._id}
                 company={company}
                 onEdit={handleEdit}
                 onDelete={handleDelete}

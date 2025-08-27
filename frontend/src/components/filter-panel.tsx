@@ -1,3 +1,4 @@
+import React from "react";
 import { Search, RotateCcw, Grid3X3, Table } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +29,32 @@ const industries = [
 
 const countries = [
   "All Locations",
+  "India",
+  "Hyderabad",
+  "Chennai",
+  "Bangalore",
+  "Mumbai",
+  "Delhi",
+  "Kolkata",
+  "Pune",
+  "Jaipur",
+  "Ahmedabad",
+  "Surat",
+  "Vadodara",
+  "Bhopal",
+  "Indore",
+  "Bengaluru",
+  "Mysore",
+  "Tamil Nadu",
+  "Kerala",
+  "Andhra Pradesh",
+  "Telangana",
+  "Maharashtra",
+  "Gujarat",
+  "Rajasthan",
+  "Madhya Pradesh",
+  "Chhattisgarh",
+  "Odisha",
   "United States",
   "United Kingdom", 
   "Canada",

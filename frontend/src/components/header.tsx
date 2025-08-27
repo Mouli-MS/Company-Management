@@ -1,3 +1,4 @@
+import React from "react";
 import { Building, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "./theme-provider";
@@ -14,7 +15,7 @@ export function Header() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Building className="h-4 w-4 text-primary-foreground" />
               </div>
-              <span className="font-bold text-lg text-foreground">CompanyHub</span>
+              <span className="font-bold text-lg text-foreground">Mouli's Company</span>
             </div>
           </div>
           
@@ -35,9 +36,9 @@ export function Header() {
             
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground text-xs font-medium">JD</span>
+                <span className="text-primary-foreground text-xs font-medium">MS</span>
               </div>
-              <span className="text-sm font-medium text-foreground hidden sm:block">John Doe</span>
+              <span className="text-sm font-medium text-foreground hidden sm:block">Mouli</span>
             </div>
           </div>
         </div>

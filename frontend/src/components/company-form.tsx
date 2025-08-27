@@ -1,3 +1,4 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X, Save, Upload } from "lucide-react";
@@ -9,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -20,8 +22,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { insertCompanySchema } from "@shared/schema";
-import type { Company, InsertCompany } from "@shared/schema";
+import { insertCompanySchema } from "@shared/mongo-schema";
+import type { Company, InsertCompany } from "@shared/mongo-schema";
 
 interface CompanyFormProps {
   isOpen: boolean;
@@ -43,6 +45,32 @@ const industries = [
 ];
 
 const countries = [
+  "India",
+  "Hyderabad",
+  "Chennai",
+  "Bangalore",
+  "Mumbai",
+  "Delhi",
+  "Kolkata",
+  "Pune",
+  "Jaipur",
+  "Ahmedabad",
+  "Surat",
+  "Vadodara",
+  "Bhopal",
+  "Indore",
+  "Bengaluru",
+  "Mysore",
+  "Tamil Nadu",
+  "Kerala",
+  "Andhra Pradesh",
+  "Telangana",
+  "Maharashtra",
+  "Gujarat",
+  "Rajasthan",
+  "Madhya Pradesh",
+  "Chhattisgarh",
+  "Odisha",
   "United States",
   "United Kingdom", 
   "Canada",
@@ -50,6 +78,7 @@ const countries = [
   "France",
   "Japan",
   "Australia"
+
 ];
 
 export function CompanyForm({ isOpen, onClose, onSubmit, company, isLoading }: CompanyFormProps) {
@@ -77,6 +106,9 @@ export function CompanyForm({ isOpen, onClose, onSubmit, company, isLoading }: C
           <DialogTitle data-testid="text-modal-title">
             {company ? "Edit Company" : "Add New Company"}
           </DialogTitle>
+          <DialogDescription>
+            {company ? "Update the company information below." : "Fill in the details to add a new company to the database."}
+          </DialogDescription>
         </DialogHeader>
         
         <Form {...form}>

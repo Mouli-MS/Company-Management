@@ -1,3 +1,4 @@
+import React from "react";
 import { ArrowUpDown, Edit, Trash2, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -10,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { Company } from "@shared/schema";
+import type { Company } from "@shared/mongo-schema";
 
 interface CompanyTableProps {
   companies: Company[];
@@ -81,9 +82,9 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
               
               return (
                 <TableRow 
-                  key={company.id} 
+                  key={company._id} 
                   className="hover:bg-muted/50 transition-colors"
-                  data-testid={`row-company-${company.id}`}
+                  data-testid={`row-company-${company._id}`}
                 >
                   <TableCell className="px-6 py-4">
                     <div className="flex items-center">
@@ -91,7 +92,7 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
                         {industryIcon}
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-foreground" data-testid={`text-table-name-${company.id}`}>
+                        <div className="text-sm font-medium text-foreground" data-testid={`text-table-name-${company._id}`}>
                           {company.name}
                         </div>
                         <div className="text-sm text-muted-foreground">
@@ -101,14 +102,14 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
                     </div>
                   </TableCell>
                   <TableCell className="px-6 py-4">
-                    <Badge className={industryColor} data-testid={`badge-table-industry-${company.id}`}>
+                    <Badge className={industryColor} data-testid={`badge-table-industry-${company._id}`}>
                       {company.industry}
                     </Badge>
                   </TableCell>
-                  <TableCell className="px-6 py-4 text-sm text-muted-foreground" data-testid={`text-table-location-${company.id}`}>
+                  <TableCell className="px-6 py-4 text-sm text-muted-foreground" data-testid={`text-table-location-${company._id}`}>
                     {company.city}, {company.country}
                   </TableCell>
-                  <TableCell className="px-6 py-4 text-sm text-foreground" data-testid={`text-table-employees-${company.id}`}>
+                  <TableCell className="px-6 py-4 text-sm text-foreground" data-testid={`text-table-employees-${company._id}`}>
                     {company.employees.toLocaleString()}
                   </TableCell>
                   <TableCell className="px-6 py-4 text-right">
@@ -117,7 +118,7 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8"
-                        data-testid={`button-table-view-${company.id}`}
+                        data-testid={`button-table-view-${company._id}`}
                       >
                         <Eye className="h-4 w-4" />
                       </Button>
@@ -126,7 +127,7 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
                         size="icon"
                         className="h-8 w-8"
                         onClick={() => onEdit(company)}
-                        data-testid={`button-table-edit-${company.id}`}
+                        data-testid={`button-table-edit-${company._id}`}
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
@@ -134,8 +135,8 @@ export function CompanyTable({ companies, onEdit, onDelete }: CompanyTableProps)
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                        onClick={() => onDelete(company.id)}
-                        data-testid={`button-table-delete-${company.id}`}
+                        onClick={() => onDelete(company._id)}
+                        data-testid={`button-table-delete-${company._id}`}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

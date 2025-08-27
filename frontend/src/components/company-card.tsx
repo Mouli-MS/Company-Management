@@ -1,8 +1,9 @@
+import React from "react";
 import { MapPin, Users, Edit, Trash2, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import type { Company } from "@shared/schema";
+import type { Company } from "@shared/mongo-schema";
 
 interface CompanyCardProps {
   company: Company;
@@ -45,10 +46,10 @@ export function CompanyCard({ company, onEdit, onDelete }: CompanyCardProps) {
               {industryIcon}
             </div>
             <div>
-              <h3 className="font-semibold text-foreground" data-testid={`text-company-name-${company.id}`}>
+              <h3 className="font-semibold text-foreground" data-testid={`text-company-name-${company._id}`}>
                 {company.name}
               </h3>
-              <p className="text-sm text-muted-foreground" data-testid={`text-company-industry-${company.id}`}>
+              <p className="text-sm text-muted-foreground" data-testid={`text-company-industry-${company._id}`}>
                 {company.industry}
               </p>
             </div>
@@ -59,7 +60,7 @@ export function CompanyCard({ company, onEdit, onDelete }: CompanyCardProps) {
               size="icon"
               className="h-6 w-6"
               onClick={() => onEdit(company)}
-              data-testid={`button-edit-${company.id}`}
+              data-testid={`button-edit-${company._id}`}
             >
               <Edit className="h-3 w-3" />
             </Button>
@@ -67,8 +68,8 @@ export function CompanyCard({ company, onEdit, onDelete }: CompanyCardProps) {
               variant="ghost"
               size="icon"
               className="h-6 w-6 text-muted-foreground hover:text-destructive"
-              onClick={() => onDelete(company.id)}
-              data-testid={`button-delete-${company.id}`}
+              onClick={() => onDelete(company._id)}
+              data-testid={`button-delete-${company._id}`}
             >
               <Trash2 className="h-3 w-3" />
             </Button>
@@ -78,33 +79,33 @@ export function CompanyCard({ company, onEdit, onDelete }: CompanyCardProps) {
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-sm">
             <MapPin className="h-4 w-4 text-muted-foreground mr-2" />
-            <span className="text-muted-foreground" data-testid={`text-company-location-${company.id}`}>
+            <span className="text-muted-foreground" data-testid={`text-company-location-${company._id}`}>
               {company.city}, {company.country}
             </span>
           </div>
           <div className="flex items-center text-sm">
             <Users className="h-4 w-4 text-muted-foreground mr-2" />
-            <span className="text-muted-foreground" data-testid={`text-company-employees-${company.id}`}>
+            <span className="text-muted-foreground" data-testid={`text-company-employees-${company._id}`}>
               {company.employees.toLocaleString()} employees
             </span>
           </div>
         </div>
         
         {company.description && (
-          <p className="text-sm text-muted-foreground mb-4 line-clamp-3" data-testid={`text-company-description-${company.id}`}>
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-3" data-testid={`text-company-description-${company._id}`}>
             {company.description}
           </p>
         )}
         
         <div className="flex items-center justify-between">
-          <Badge className={industryColor} data-testid={`badge-industry-${company.id}`}>
+          <Badge className={industryColor} data-testid={`badge-industry-${company._id}`}>
             {company.industry}
           </Badge>
           <Button
             variant="ghost"
             size="sm"
             className="text-primary hover:text-primary/80"
-            data-testid={`button-view-details-${company.id}`}
+            data-testid={`button-view-details-${company._id}`}
           >
             <Eye className="h-4 w-4 mr-1" />
             View Details
