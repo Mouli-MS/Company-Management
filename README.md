@@ -1,6 +1,6 @@
 # Company Management System
 
-A full-stack company management system built with React, Express, and MongoDB.
+A full-stack company management system built with React, Express, REST API, and MongoDB.
 
 ## Project Structure
 
