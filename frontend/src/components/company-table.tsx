@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { Company } from "@shared/mongo-schema";
+import type { Company } from "@/lib/types";
 
 interface CompanyTableProps {
   companies: Company[];

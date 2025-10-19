@@ -23,7 +23,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { insertCompanySchema } from "@shared/mongo-schema";
-import type { Company, InsertCompany } from "@shared/mongo-schema";
+import type { InsertCompany } from "@shared/mongo-schema";
+import type { Company } from "@/lib/types";
 
 interface CompanyFormProps {
   isOpen: boolean;
@@ -46,31 +47,6 @@ const industries = [
 
 const countries = [
   "India",
-  "Hyderabad",
-  "Chennai",
-  "Bangalore",
-  "Mumbai",
-  "Delhi",
-  "Kolkata",
-  "Pune",
-  "Jaipur",
-  "Ahmedabad",
-  "Surat",
-  "Vadodara",
-  "Bhopal",
-  "Indore",
-  "Bengaluru",
-  "Mysore",
-  "Tamil Nadu",
-  "Kerala",
-  "Andhra Pradesh",
-  "Telangana",
-  "Maharashtra",
-  "Gujarat",
-  "Rajasthan",
-  "Madhya Pradesh",
-  "Chhattisgarh",
-  "Odisha",
   "United States",
   "United Kingdom", 
   "Canada",
@@ -78,7 +54,6 @@ const countries = [
   "France",
   "Japan",
   "Australia"
-
 ];
 
 export function CompanyForm({ isOpen, onClose, onSubmit, company, isLoading }: CompanyFormProps) {

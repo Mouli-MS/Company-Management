@@ -3,7 +3,7 @@ import { MapPin, Users, Edit, Trash2, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import type { Company } from "@shared/mongo-schema";
+import type { Company } from "@/lib/types";
 
 interface CompanyCardProps {
   company: Company;

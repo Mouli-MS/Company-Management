@@ -1,8 +1,9 @@
 import { type User, type InsertUser, type Company, type InsertCompany, User as UserModel, Company as CompanyModel } from "@shared/mongo-schema";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
+  getUser(id: string): Promise<User | null>;
+  getUserByUsername(username: string): Promise<User | null>;
+  
   createUser(user: InsertUser): Promise<User>;
   
   // Company CRUD operations
@@ -13,28 +14,28 @@ export interface IStorage {
     minEmployees?: number;
     maxEmployees?: number;
   }): Promise<Company[]>;
-  getCompany(id: string): Promise<Company | undefined>;
+  getCompany(id: string): Promise<Company | null>;
   createCompany(company: InsertCompany): Promise<Company>;
-  updateCompany(id: string, company: Partial<InsertCompany>): Promise<Company | undefined>;
+  updateCompany(id: string, company: Partial<InsertCompany>): Promise<Company | null>;
   deleteCompany(id: string): Promise<boolean>;
 }
 
 export class MongoStorage implements IStorage {
-  async getUser(id: string): Promise<User | undefined> {
+  async getUser(id: string): Promise<User | null> {
     try {
       return await UserModel.findById(id).exec();
     } catch (error) {
       console.error('Error getting user by ID:', error);
-      return undefined;
+  return null;
     }
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
+  async getUserByUsername(username: string): Promise<User | null> {
     try {
       return await UserModel.findOne({ username }).exec();
     } catch (error) {
       console.error('Error getting user by username:', error);
-      return undefined;
+  return null;
     }
   }
 
@@ -86,12 +87,12 @@ export class MongoStorage implements IStorage {
     }
   }
 
-  async getCompany(id: string): Promise<Company | undefined> {
+  async getCompany(id: string): Promise<Company | null> {
     try {
       return await CompanyModel.findById(id).exec();
     } catch (error) {
       console.error('Error getting company by ID:', error);
-      return undefined;
+  return null;
     }
   }
 
@@ -100,12 +101,12 @@ export class MongoStorage implements IStorage {
     return await company.save();
   }
 
-  async updateCompany(id: string, updateData: Partial<InsertCompany>): Promise<Company | undefined> {
+  async updateCompany(id: string, updateData: Partial<InsertCompany>): Promise<Company | null> {
     try {
       return await CompanyModel.findByIdAndUpdate(id, updateData, { new: true }).exec();
     } catch (error) {
       console.error('Error updating company:', error);
-      return undefined;
+  return null;
     }
   }
 

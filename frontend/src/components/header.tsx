@@ -15,7 +15,7 @@ export function Header() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Building className="h-4 w-4 text-primary-foreground" />
               </div>
-              <span className="font-bold text-lg text-foreground">Mouli's Company</span>
+              <span className="font-bold text-lg text-foreground">MP World!</span>
             </div>
           </div>
           

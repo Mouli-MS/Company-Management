@@ -10,8 +10,8 @@ import { CompanyCard } from "@/components/company-card";
 import { CompanyTable } from "@/components/company-table";
 import { CompanyForm } from "@/components/company-form";
 import { apiRequest } from "@/lib/queryClient";
-import type { Company, InsertCompany } from "@shared/mongo-schema";
-import type { CompanyFilters, ViewMode, PaginationState } from "@/lib/types";
+import type { InsertCompany } from "@shared/mongo-schema";
+import type { Company, CompanyFilters, ViewMode, PaginationState } from "@/lib/types";
 
 const ITEMS_PER_PAGE = 12;
 

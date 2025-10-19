@@ -3,6 +3,7 @@ import { z } from "zod";
 
 // User Schema
 export interface IUser extends Document {
+  _id: mongoose.Types.ObjectId;
   username: string;
   password: string;
 }
@@ -16,6 +17,7 @@ const userSchema = new Schema<IUser>({
 
 // Company Schema
 export interface ICompany extends Document {
+  _id: mongoose.Types.ObjectId;
   name: string;
   industry: string;
   country: string;
